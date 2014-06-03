@@ -134,6 +134,7 @@ module Stamps
       property :rotationDegrees,                      :from => :rotation
       property :printMemo,                            :from => :print_memo
       property :ReturnImageData,                      :from => :return_image_data
+      property :nonDeliveryOption,                    :from => :non_delivery_option
 
       # Maps :from to Address map
       def from=(val)
