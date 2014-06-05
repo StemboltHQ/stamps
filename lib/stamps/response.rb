@@ -38,7 +38,7 @@ module Stamps
     #
     def raise_errors
       message =  'FIXME:  Need to parse http for response message'
-      return self.format_soap_faults if savon.soap_fault?
+      return self.format_soap_faults if savon.soap_fault.present?
 
       case http.code.to_i
       when 200

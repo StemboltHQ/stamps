@@ -43,7 +43,7 @@ end
 
 def stub_response(web_method, code = 200)
   http_response = HTTPI::Response.new(code, {}, fixture("#{web_method}.xml").read)
-  Stamps::Response.new(Savon::Response.new(http_response, {}, {}))
+  Stamps::Response.new(Savon::SOAP::Response.new(Savon.config, http_response))
 end
 
 def fixture_path

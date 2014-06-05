@@ -48,10 +48,10 @@ module Stamps
       yield self
 
       HTTPI.log = false
-      # Savon.configure do |config|
-      #   config.log = self.log_messages
-      #   config.raise_errors = self.raise_errors
-      # end
+      Savon.configure do |config|
+        config.log = self.log_messages
+        config.raise_errors = self.raise_errors
+      end
     end
 
     # Create a hash of options and their values
