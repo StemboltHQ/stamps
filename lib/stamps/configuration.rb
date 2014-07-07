@@ -12,6 +12,7 @@ module Stamps
       :return_address,
       :test_mode,
       :raise_errors,
+      :logger,
       :log_messages,
       :open_timeout,
       :read_timeout,
@@ -32,6 +33,9 @@ module Stamps
     # Do not raise errors by default
     DEFAULT_RAISE_ERRORS = false
 
+    # Log to STDOUT by default
+    DEFAULT_LOGGER = Logger.new(STDOUT)
+
     # Do not log requests and response by default
     DEFAULT_LOG_MESSAGES = false
 
@@ -50,6 +54,7 @@ module Stamps
       HTTPI.log = false
       Savon.configure do |config|
         config.log = self.log_messages
+        config.logger = self.logger
         config.raise_errors = self.raise_errors
       end
     end
@@ -65,6 +70,7 @@ module Stamps
       self.namespace    = DEFAULT_NAMESPACE
       self.format       = DEFAULT_FORMAT
       self.log_messages = DEFAULT_LOG_MESSAGES
+      self.logger       = DEFAULT_LOGGER
       self.raise_errors = DEFAULT_RAISE_ERRORS
       self.open_timeout = 30
       self.read_timeout = 30
