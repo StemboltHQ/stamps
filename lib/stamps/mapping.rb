@@ -27,12 +27,12 @@ module Stamps
       property :Username,      :from => :username
       property :Password,      :from => :password
     end
-    
+
     class PostageBalance < Hashie::Trash
       property :AvailablePostage,  :from => :available_postage
-      property :ControlTotal,      :from => :control_total     
+      property :ControlTotal,      :from => :control_total
     end
-    
+
     class GetPostageStatus < Hashie::Trash
       property :TransactionID, :from => :transaction_id
     end
@@ -207,7 +207,7 @@ module Stamps
       property :PurchaseAmount, :from => :amount
       property :ControlTotal,   :from => :control_total
     end
-    
+
     class GetPurchaseStatus < Hashie::Trash
       property :Authenticator, :from => :authenticator
       property :TransactionID, :from => :transaction_id
@@ -278,5 +278,19 @@ module Stamps
       property :StampsTxID,    :from => :stamps_transaction_id
     end
 
+    class SetAutoBuy < Hashie::Trash
+      property :Authenticator, :from => :authenticator
+      property :AutoBuySettings, :from => :auto_buy_settings
+
+      def auto_buy_settings=(values)
+        self[:AutoBuySettings] = AutoBuySettings.new(values)
+      end
+    end
+
+    class AutoBuySettings < Hashie::Trash
+      property :AutoBuyEnabled, :from => :auto_buy_enabled
+      property :PurchaseAmount, :from => :purchase_amount
+      property :TriggerAmount, :from => :trigger_amount
+    end
   end
 end
