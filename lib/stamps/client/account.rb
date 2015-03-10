@@ -20,13 +20,21 @@ module Stamps
         response = request('PurchasePostage', Stamps::Mapping::PurchasePostage.new(params))
         response[:errors].empty? ? response[:purchase_postage_response] : response
       end
-      
-      # Check the payment of purchase_postage 
+
+      # Check the payment of purchase_postage
       #
       def get_purchase_status(params = {})
         params[:authenticator] = authenticator_token
         response = request('GetPurchaseStatus', Stamps::Mapping::GetPurchaseStatus.new(params))
         response[:errors].empty? ? response[:get_purchase_status_response] : response
+      end
+
+      # Set Auto Buy for account
+      #
+      def set_auto_buy(params = {})
+        params[:authenticator] = authenticator_token
+        response = request('SetAutoBuy', Stamps::Mapping::SetAutoBuy.new(params))
+        response[:errors].empty? ? response[:set_auto_buy_response] : response
       end
 
       # Request carrier pickup
