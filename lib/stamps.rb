@@ -1,3 +1,4 @@
+require 'logger'
 require 'stamps/errors'
 require 'stamps/trash'
 require 'stamps/configuration'
