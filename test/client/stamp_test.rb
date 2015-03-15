@@ -22,7 +22,7 @@ class StampTest < Test::Unit::TestCase
           :to => {:full_name => 'Matt Sears'},
           :customs => {
             :customs_lines => [
-              :custom => {
+              {
                 :description => 'Tee Shirt',
                 :quantity    => 1,
                 :weight_oz   => '7.8',
